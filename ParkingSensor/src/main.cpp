@@ -37,11 +37,12 @@ void MQTTRequest(){
   root["floor"] ="0";
   root["location"] ="11";
   root["available"] =detected;
-  root["type"] ="ADA";
+  root["spacetype"] ="ADA";
 
   char data[200];
   serializeJsonPretty(root, data);
   publishTelemetry(data);
+  serializeJsonPretty(root, Serial);
   
 }
 
@@ -88,8 +89,8 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Serial Connected");
 
-  ++bootCount;
-  Serial.println("Boot number: " + String(bootCount));
+  // ++bootCount;
+  // Serial.println("Boot number: " + String(bootCount));
 
   setupCloudIoT();
   print_wakeup_reason();

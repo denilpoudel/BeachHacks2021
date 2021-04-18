@@ -34,9 +34,7 @@ export class AnySpot extends Component {
         console.log("no spot found")
         this.setState({foundSpot: true})
       }
-    });
-
-    
+    });    
   }
 
   debug = () => {
