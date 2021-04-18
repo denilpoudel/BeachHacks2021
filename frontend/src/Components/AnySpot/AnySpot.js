@@ -63,7 +63,7 @@ export class AnySpot extends Component {
           </Grid.Column>
           <Grid.Column>
             <Button basic floated="right" as={Link} to="/about">
-              Help
+              About
             </Button>
           </Grid.Column>
         </Grid>

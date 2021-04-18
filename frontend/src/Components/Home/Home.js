@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import emojis from './Emojislol.png';
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid, Image } from "semantic-ui-react";
+import { Button, Dropdown, Grid, GridRow, Image } from "semantic-ui-react";
 
 const options = [
   {
@@ -49,10 +49,9 @@ const options = [
 
 const Home = () => {
   return (
-    <div style={{ fontFamily: "Montserrat" }}>
+    <div style={{ fontFamily: "Montserrat"}}>
       <Grid columns="equal" centered padded>
-        <Grid.Column></Grid.Column>
-        <Grid.Column class="centered column" textAlign="center">
+        <Grid.Column width={15} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
           <Grid.Row class="centered row">
             <Grid.Row>
               <Image 
@@ -102,7 +101,7 @@ const Home = () => {
         </Grid.Column>
         <Grid.Column>
           <Button basic floated="right" as={Link} to="/about">
-            Help
+            About
           </Button>
         </Grid.Column>
       </Grid>
