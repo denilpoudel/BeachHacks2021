@@ -11,7 +11,6 @@ import { AnySpot } from "./Components/AnySpot";
 import { About } from "./Components/About";
 import { SpecificSpot } from "./Components/SpecificSpot";
 
-
 function App() {
   return (
     <div className="App">
@@ -22,7 +21,7 @@ function App() {
           </Route>
           <Route path="/anyspot" component={AnySpot} />
           <Route path="/about" component={About} />
-          <Route path="/specifcspot" component={SpecificSpot} />
+          <Route path="/specificspot" component={SpecificSpot} />
         </Switch>
       </Router>
     </div>

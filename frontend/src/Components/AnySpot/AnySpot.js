@@ -64,6 +64,9 @@ export class AnySpot extends Component {
                   Please wait a few<br />
                   minutes, then
                 </p>
+                <Button fluid style={{ fontSize: 20 }}>
+                  Try again
+                </Button>
               </div>
             )}
             <br />

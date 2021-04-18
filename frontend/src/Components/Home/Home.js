@@ -48,6 +48,19 @@ const options = [
 ];
 
 const Home = () => {
+  const [isSelected, setIsSelected] = useState(false);
+  const [parkingArea, setParkingArea] = useState("");
+
+  const debug = () => {
+    setIsSelected(true);
+  };
+
+  const handleChange = (e, { name, value }) => {
+    e.preventDefault();
+    setParkingArea({ [name]: value }, console.log(parkingArea));
+    setIsSelected(true);
+  };
+
   return (
     <div style={{ fontFamily: "Montserrat"}}>
       <Grid columns="equal" centered padded>
@@ -89,14 +102,34 @@ const Home = () => {
                 search
                 selection
                 clearable
+                name="parkingArea"
                 options={options}
+                onChange={handleChange}
               />
               <br />
               <br />
             </Grid.Row>
             <Grid.Row>
-              <Button style={{ fontSize: 20 }}>Let's go!</Button>
+              {isSelected ? (
+                <div>
+                  <Button
+                    color="green"
+                    style={{ fontSize: 20 }}
+                    as={Link}
+                    to={{ pathname: "/specificspot", state: parkingArea }}
+                  >
+                    Let's go!
+                  </Button>
+                </div>
+              ) : (
+                <div>
+                  <Button style={{ fontSize: 20 }}>Let's go!</Button>
+                </div>
+              )}
             </Grid.Row>
+            <Button icon labelPosition="left" secondary onClick={debug}>
+              Debug <Icon name="eye" />
+            </Button>
           </Grid.Row>
         </Grid.Column>
         <Grid.Column>
