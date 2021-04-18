@@ -64,7 +64,7 @@ export class AnySpot extends Component {
                   Please wait a few<br />
                   minutes, then
                 </p>
-                <Button style={{ fontSize: 20 }}>
+                <Button as={Link} to="/" style={{ fontSize: 20 }}>
                   Try again
                 </Button>
               </div>
