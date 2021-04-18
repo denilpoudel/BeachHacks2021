@@ -1,20 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import 'semantic-ui-css/semantic.min.css'
+import "./App.css";
+import "semantic-ui-css/semantic.min.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  withRouter,
 } from "react-router-dom";
-import * as ROUTES from "./Constants/routes"
-import Home from "./Components/Home/Home";
+import { Home } from "./Components/Home";
+import { AnySpot } from "./Components/AnySpot";
+import { About } from "./Components/About";
+import { SpecificSpot } from "./Components/SpecificSpot";
 
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/anyspot" component={AnySpot} />
+          <Route path="/about" component={About} />
+          <Route path="/specifcspot" component={SpecificSpot} />
+        </Switch>
+      </Router>
     </div>
   );
 }
