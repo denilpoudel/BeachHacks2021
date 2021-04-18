@@ -33,7 +33,6 @@ void MQTTRequest(){
 
   StaticJsonDocument<200> root;
  
-  root["controllerId"] = "1";
   root["parkingLot"] = "G11";
   root["floor"] ="0";
   root["location"] ="11";
