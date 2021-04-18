@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import happyemojis from "./HappyEmojis.png";
 import { Link } from "react-router-dom";
+import sademojis from "./SadEmojis.png";
 import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
 import axios from "axios";
 
@@ -13,6 +14,7 @@ export class SpecificSpot extends Component {
 
    
     this.state = {
+      foundSpot: true,
       parkingLocation: [],
       floor: "Floor 1",
       spots: "7",
@@ -34,7 +36,7 @@ export class SpecificSpot extends Component {
     axios.post(url, name).then((res) => {
       console.log(res);
       console.log(res.data);
-      this.setState({parkingLocation: res.data })
+      this.setState({parkingLocation: res.data, foundSpot: true })
       console.log("it worked!!");
     });
 
@@ -43,7 +45,7 @@ export class SpecificSpot extends Component {
 
 
   render() {
-    const { parkingLocation, floor, spots,} = this.state;
+    const { parkingLocation, floor, spots, foundSpot} = this.state;
 
     console.log(this.state);
     return (
@@ -56,13 +58,13 @@ export class SpecificSpot extends Component {
           </Grid.Column>
           <Grid.Column width={14} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
             <div>
-              <Image 
+             
+              <br />
+              {foundSpot ? (<div> <Image 
                 size='small'
                 centered
                 src={happyemojis} fluid>
-              </Image>
-              <br />
-              <span style={{ fontSize: 40 }}>There are available spots at</span>
+              </Image><span style={{ fontSize: 40 }}>There are available spots at</span>
               <br />
               <br />
               <span style={{ fontSize: 40, fontWeight: "bolder" }}>
@@ -75,7 +77,25 @@ export class SpecificSpot extends Component {
               <span style={{ fontSize: 40, fontWeight: "bolder" }}>
                 {floor}:
               </span>
-              <span style={{ fontSize: 40 }}> {spots} Spots</span>
+              <span style={{ fontSize: 40 }}> {spots} Spots</span> </div>) :(<div><div>
+                <Image 
+                  size='small'
+                  centered
+                  src={sademojis} fluid>
+                </Image>
+                <p style={{ fontSize: 40 }}>
+                  We couldn't find any<br /> 
+                  open spots!
+                </p>
+                <p style={{ fontSize: 40, fontWeight: "bolder" }}>
+                  Please wait a few<br />
+                  minutes, then
+                </p>
+                <Button as={Link} to="/" style={{ fontSize: 20 }}>
+                  Try again
+                </Button>
+              </div> </div>)}
+              
               <br />
               <br />
               <br />
