@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid, Placeholder, Card } from "semantic-ui-react";
+import { Button, Grid, Placeholder, Card } from "semantic-ui-react";
 
 function About() {
   return (
