@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include <NewPing.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include "esp32-mqtt.h"
 
 #define PING_PIN  5  // Arduino pin tied to both trigger and echo pins on the ultrasonic sensor.
 #define MAX_DISTANCE 200 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
@@ -10,10 +13,32 @@
 #define ID 12;
 
 RTC_DATA_ATTR int bootCount = 0;
+ 
 
-bool detected = false; 
+bool detected = false;
+RTC_DATA_ATTR bool prevDetected = false;  
 
 NewPing sonar(PING_PIN, PING_PIN, MAX_DISTANCE); // NewPing setup of pin and maximum distance.
+
+
+void MQTTRequest(){
+  mqtt->loop();
+  delay(10);  // <- fixes some issues with WiFi stability
+
+  if (!mqttClient->connected()) {
+    connect();
+  }
+
+   String payload =
+      String("{\"timestamp\":") +
+      String(",\"temperature\":") + 
+      String(",\"humidity\":") + 
+      String("}");
+
+  publishTelemetry(payload);
+  
+}
+
 
 void ultraSonicSensor(){
 
@@ -60,10 +85,19 @@ void setup() {
   ++bootCount;
   Serial.println("Boot number: " + String(bootCount));
 
+  setupCloudIoT();
   print_wakeup_reason();
   ultraSonicSensor();
-  
+  MQTTRequest();
+ 
+ 
+ if (detected != prevDetected){
+   Serial.println("detected doesnt equal prevDected");
+   prevDetected = detected;
+ }
+ 
   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+ 
  
   Serial.println("Going to sleep now");
   delay(1000);
