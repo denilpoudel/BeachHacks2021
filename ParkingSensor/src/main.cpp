@@ -94,11 +94,12 @@ void setup() {
   setupCloudIoT();
   print_wakeup_reason();
   ultraSonicSensor();
-  MQTTRequest();
+  
  
  
  if (detected != prevDetected){
    Serial.println("detected doesnt equal prevDected");
+   MQTTRequest();
    prevDetected = detected;
  }
  
