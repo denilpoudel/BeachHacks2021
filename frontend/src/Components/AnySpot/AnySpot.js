@@ -24,7 +24,9 @@ export class AnySpot extends Component {
       <div style={{ fontFamily: "Montserrat" }}>
         <Grid columns="equal" centered padded>
           <Grid.Column>
-            <Button basic>Back</Button>
+            <Button basic as={Link} to="/">
+              Back
+            </Button>
           </Grid.Column>
           <Grid.Column class="centered column" textAlign="center">
             {foundSpot ? (
@@ -60,7 +62,7 @@ export class AnySpot extends Component {
             </Button>
           </Grid.Column>
           <Grid.Column>
-            <Button basic floated="right">
+            <Button basic floated="right" as={Link} to="/about">
               Help
             </Button>
           </Grid.Column>

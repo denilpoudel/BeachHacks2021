@@ -96,7 +96,7 @@ const Home = () => {
           </Grid.Row>
         </Grid.Column>
         <Grid.Column>
-          <Button basic floated="right">
+          <Button basic floated="right" as={Link} to="/about">
             Help
           </Button>
         </Grid.Column>
