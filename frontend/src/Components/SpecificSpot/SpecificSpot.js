@@ -84,7 +84,7 @@ export class SpecificSpot extends Component {
       console.log("it worked!!");
     });
 
-    const floor = "Floor " + Math.floor(Math.random() * 4);
+    const floor = "Floor " + 0;
     const spots = Math.floor(Math.random() * 39)+1;
     const chance = Math.floor(Math.random() * 2);
 
