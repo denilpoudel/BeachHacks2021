@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import sademojis from "./SadEmojis.png";
+import happyemojis from "./HappyEmojis.png";
 import { Link } from "react-router-dom";
-import { Button, Grid, Icon, Placeholder } from "semantic-ui-react";
+import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
 
 export class AnySpot extends Component {
   constructor(props) {
@@ -28,15 +30,20 @@ export class AnySpot extends Component {
               Back
             </Button>
           </Grid.Column>
-          <Grid.Column class="centered column" textAlign="center">
+          <Grid.Column width={14} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
             {foundSpot ? (
               <div>
-                <span style={{ fontSize: 20 }}>We found you a spot at:</span>
-                <br />
-                <br />
-                <span style={{ fontSize: 40, fontWeight: "bolder" }}>
+                <Image 
+                  size='small'
+                  centered
+                  src={happyemojis} fluid>
+                </Image>
+                <p style={{ fontSize: 40 }}>
+                  We found you a spot at:
+                </p>
+                <p style={{ fontSize: 40, fontWeight: "bolder" }}>
                   {parkingLocation}
-                </span>
+                </p>
 
                 <Placeholder fluid inverted style={{ height: 300 }}>
                   <Placeholder.Image />
@@ -44,14 +51,19 @@ export class AnySpot extends Component {
               </div>
             ) : (
               <div>
-                <span style={{ fontSize: 20 }}>
-                  We couldn't find any open spots!
-                </span>
-                <br />
-                <br />
-                <span style={{ fontSize: 40, fontWeight: "bolder" }}>
-                  Please wait a few minutes, then
-                </span>
+                <Image 
+                  size='small'
+                  centered
+                  src={sademojis} fluid>
+                </Image>
+                <p style={{ fontSize: 40 }}>
+                  We couldn't find any<br /> 
+                  open spots!
+                </p>
+                <p style={{ fontSize: 40, fontWeight: "bolder" }}>
+                  Please wait a few<br />
+                  minutes, then
+                </p>
               </div>
             )}
             <br />
