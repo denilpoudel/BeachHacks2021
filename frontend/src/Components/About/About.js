@@ -1,6 +1,10 @@
 import React from "react";
+import Crab from './Cody_the_Crab.png';
+import Clam from './Crypto_the_Clam.png';
+import Shark from './Byte_the_Shark.png';
+import emojis from './MoreEmojis.png';
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid, Placeholder, Card } from "semantic-ui-react";
+import { Button, Dropdown, Grid, Placeholder, Card, Image } from "semantic-ui-react";
 
 function About() {
   return (
@@ -11,39 +15,27 @@ function About() {
             Home
           </Button>
         </Grid.Column>
-        <Grid.Column class="centered column" textAlign="center">
-          <div style={{ fontSize: 20 }}>
+        <Grid.Column width={15} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
+          <div style={{ fontSize: 30 }}>
             <Grid.Row>
-              <b style={{ display: "inline" }}>Parking’s a BEACH </b>
+              <Image 
+                size='small'
+                centered
+                src={emojis} fluid>
+              </Image>
+              <b style={{ display: "inline" }}><br />Parking’s a BEACH</b>
               <p style={{ margin: 0, padding: 0 }}>
-                was created by four CSULB engineering students who were fed up
-                with parking.
+                was created by four CSULB<br />
+                engineering students who<br />
+                were fed up with parking.
               </p>
             </Grid.Row>
             <Grid.Row>
-              <Card.Group itemsPerRow={3}>
-                <Card>
-                  <Card.Content>
-                    <Placeholder>
-                      <Placeholder.Image square />
-                    </Placeholder>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Card.Content>
-                    <Placeholder>
-                      <Placeholder.Image square />
-                    </Placeholder>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Card.Content>
-                    <Placeholder>
-                      <Placeholder.Image square />
-                    </Placeholder>
-                  </Card.Content>
-                </Card>
-              </Card.Group>
+              <Image.Group>
+                <Image src={Crab} centered fluid size='small' />
+                <Image src={Clam} centered fluid size='small' />
+                <Image src={Shark} centered fluid size='small' />
+              </Image.Group>
             </Grid.Row>
 
             <Grid.Row>
@@ -54,7 +46,8 @@ function About() {
                 sensors{" "}
               </b>
               <p style={{ margin: 0, padding: 0, display: "inline" }}>
-                to detect empty parking spots on campus.
+                <br />to detect empty parking
+                <br />spots on campus.
               </p>
             </Grid.Row>
           </div>
