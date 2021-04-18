@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import happyemojis from "./HappyEmojis.png";
 import { Link } from "react-router-dom";
-import { Button, Grid, Icon, Placeholder } from "semantic-ui-react";
+import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
 
 export class SpecificSpot extends Component {
   constructor(props) {
@@ -28,20 +29,31 @@ export class SpecificSpot extends Component {
               Back
             </Button>
           </Grid.Column>
-          <Grid.Column class="centered column" textAlign="center">
+          <Grid.Column width={14} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
             <div>
-              <span style={{ fontSize: 20 }}>There are available spots at</span>
+              <Image 
+                size='small'
+                centered
+                src={happyemojis} fluid>
+              </Image>
+              <br />
+              <span style={{ fontSize: 40 }}>There are available spots at</span>
               <br />
               <br />
-              <span style={{ fontSize: 20, fontWeight: "bolder" }}>
+              <span style={{ fontSize: 40, fontWeight: "bolder" }}>
                 {parkingArea}
               </span>
               <br />
               <br />
-              <span style={{ fontSize: 20, fontWeight: "bolder" }}>
+              <br />
+              <br />
+              <span style={{ fontSize: 40, fontWeight: "bolder" }}>
                 {floor}:
               </span>
-              <span style={{ fontSize: 20 }}> {spots} Spots</span>
+              <span style={{ fontSize: 40 }}> {spots} Spots</span>
+              <br />
+              <br />
+              <br />
               <Placeholder fluid inverted style={{ height: 300 }}>
                 <Placeholder.Image />
               </Placeholder>
@@ -56,7 +68,7 @@ export class SpecificSpot extends Component {
           </Grid.Column>
           <Grid.Column>
             <Button basic floated="right" as={Link} to="/about">
-              Help
+              About
             </Button>
           </Grid.Column>
         </Grid>

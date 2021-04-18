@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import emojis from './Emojislol.png';
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid, GridRow, Image } from "semantic-ui-react";
+import { Button, Dropdown, Grid, GridRow, Image, Icon } from "semantic-ui-react";
 
 const options = [
   {
