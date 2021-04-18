@@ -110,7 +110,7 @@ export class SpecificSpot extends Component {
               Back
             </Button>
           </Grid.Column>
-          <Grid.Column width={14} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
+          <Grid.Column width={14} class="centered column" textAlign="center" style={{position: 'absolute', top: '15%'}}>
             <div>
              
               <br />
