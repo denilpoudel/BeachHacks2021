@@ -7,6 +7,7 @@ export class SpecificSpot extends Component {
     super(props);
 
     this.state = {
+      parkingArea: "",
       parkingLocation: "Pyramid Parking Structure",
       floor: "Floor 1",
       spots: "7",
@@ -14,7 +15,8 @@ export class SpecificSpot extends Component {
   }
 
   render() {
-    const { foundSpot, parkingLocation, floor, spots } = this.state;
+    const { parkingLocation, floor, spots } = this.state;
+    console.log(this.state);
     return (
       <div style={{ fontFamily: "Montserrat" }}>
         <Grid columns="equal" centered padded>

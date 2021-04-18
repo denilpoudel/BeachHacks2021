@@ -48,7 +48,7 @@ const options = [
 
 const Home = () => {
   const [isSelected, setIsSelected] = useState(false);
-  const [parkingAreas, setParkingAreas] = useState("");
+  const [parkingArea, setParkingArea] = useState("");
 
   const debug = () => {
     setIsSelected(true);
@@ -56,7 +56,7 @@ const Home = () => {
 
   const handleChange = (e, { name, value }) => {
     e.preventDefault();
-    setParkingAreas({ [name]: value }, console.log(parkingAreas));
+    setParkingArea({ [name]: value }, console.log(parkingArea));
     setIsSelected(true);
   };
 
@@ -98,7 +98,7 @@ const Home = () => {
                 search
                 selection
                 clearable
-                name="parkingAreas"
+                name="parkingArea"
                 options={options}
                 onChange={handleChange}
               />
@@ -112,7 +112,7 @@ const Home = () => {
                     color="green"
                     style={{ fontSize: 20 }}
                     as={Link}
-                    to="/specificspot"
+                    to={{ pathname: "/specificspot", state: parkingArea }}
                   >
                     Let's go!
                   </Button>
