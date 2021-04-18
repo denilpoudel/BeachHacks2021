@@ -2,7 +2,8 @@
 #include <NewPing.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include "esp32-mqtt.h"
+#include <esp32-mqtt.h>
+#include <ArduinoJson.h>
 
 #define PING_PIN  5  // Arduino pin tied to both trigger and echo pins on the ultrasonic sensor.
 #define MAX_DISTANCE 200 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
@@ -29,13 +30,19 @@ void MQTTRequest(){
     connect();
   }
 
-   String payload =
-      String("{\"timestamp\":") +
-      String(",\"temperature\":") + 
-      String(",\"humidity\":") + 
-      String("}");
 
-  publishTelemetry(payload);
+  StaticJsonDocument<200> root;
+ 
+  root["controllerId"] = "1";
+  root["parkingLot"] = "G11";
+  root["floor"] ="0";
+  root["location"] ="11";
+  root["available"] =detected;
+  root["type"] ="ADA";
+
+  char data[200];
+  serializeJsonPretty(root, data);
+  publishTelemetry(data);
   
 }
 
