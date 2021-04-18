@@ -14,7 +14,7 @@ export class AnySpot extends Component {
 
     this.state = {
       foundSpot: false,
-      parkingLocation: [],
+      parkingLocation: "",
     };
   }
 
@@ -28,13 +28,19 @@ export class AnySpot extends Component {
       console.log(res);
       console.log(res.data);
       if (res.data == "any") {
-        this.setState({parkingLocation: res.data, foundSpot: true })
+        this.setState({parkingLocation: "TEST", foundSpot: true })
         console.log("it worked!!")} 
       else {
         console.log("no spot found")
         this.setState({foundSpot: true})
       }
     });    
+    const chance = Math.floor(Math.random() * 2);
+    let works = false;
+    if (chance == "1"){
+      works = true
+    }    
+    this.setState({foundSpot: works})
   }
 
   debug = () => {
@@ -94,10 +100,6 @@ export class AnySpot extends Component {
             )}
             <br />
             <br />
-
-            <Button icon labelPosition="left" secondary onClick={this.debug}>
-              Debug <Icon name="eye" />
-            </Button>
           </Grid.Column>
           <Grid.Column>
             <Button basic floated="right" as={Link} to="/about">
