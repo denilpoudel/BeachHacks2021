@@ -87,9 +87,6 @@ export class SpecificSpot extends Component {
             <br />
             <br />
 
-            <Button icon labelPosition="left" secondary onClick={this.debug}>
-              Debug <Icon name="eye" />
-            </Button>
           </Grid.Column>
           <Grid.Column>
             <Button basic floated="right" as={Link} to="/about">

@@ -62,20 +62,20 @@ const Home = () => {
 
   const url = "https://us-west2-beachhacks2021.cloudfunctions.net/function-2";
 
-  const debug = () => {
-    setIsSelected(true);
+  // const debug = () => {
+  //   setIsSelected(true);
 
-    const name = {
-      name: parkingArea,
-    };
-    axios.post(url, name).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      setReceivedData(res.data);
+  //   const name = {
+  //     name: parkingArea,
+  //   };
+  //   axios.post(url, name).then((res) => {
+  //     console.log(res);
+  //     console.log(res.data);
+  //     setReceivedData(res.data);
 
-      console.log("it worked!!");
-    });
-  };
+  //     console.log("it worked!!");
+  //   });
+  // };
 
   const handleChange = (e, { name, value }) => {
     e.preventDefault();
@@ -150,9 +150,9 @@ const Home = () => {
                 </div>
               )}
             </Grid.Row>
-            <Button icon labelPosition="left" secondary onClick={debug}>
+            {/* <Button icon labelPosition="left" secondary onClick={debug}>
               Debug <Icon name="eye" />
-            </Button>
+            </Button> */}
           </Grid.Row>
         </Grid.Column>
         <Grid.Column>
