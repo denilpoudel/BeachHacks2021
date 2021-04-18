@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import emojis from './Emojislol.png';
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid } from "semantic-ui-react";
+import { Button, Dropdown, Grid, Image } from "semantic-ui-react";
 
 const options = [
   {
@@ -54,9 +55,13 @@ const Home = () => {
         <Grid.Column class="centered column" textAlign="center">
           <Grid.Row class="centered row">
             <Grid.Row>
-              <span style={{ fontSize: 40 }}>
+              <Image 
+                size='medium'
+                centered
+                src={emojis} fluid>
+              </Image>
+              <span style={{ fontSize: 50 }}>
                 <span style={{ fontWeight: "bolder" }}>
-                  <br />
                   <br />
                   Parking's a BEACH.
                 </span>
