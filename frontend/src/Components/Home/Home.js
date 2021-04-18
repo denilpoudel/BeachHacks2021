@@ -108,7 +108,12 @@ const Home = () => {
             <Grid.Row>
               {isSelected ? (
                 <div>
-                  <Button color="green" style={{ fontSize: 20 }}>
+                  <Button
+                    color="green"
+                    style={{ fontSize: 20 }}
+                    as={Link}
+                    to="/specificspot"
+                  >
                     Let's go!
                   </Button>
                 </div>

@@ -52,6 +52,11 @@ export class AnySpot extends Component {
                 <span style={{ fontSize: 40, fontWeight: "bolder" }}>
                   Please wait a few minutes, then
                 </span>
+                <br />
+                <br />
+                <Button fluid style={{ fontSize: 20 }}>
+                  Try again
+                </Button>
               </div>
             )}
             <br />
