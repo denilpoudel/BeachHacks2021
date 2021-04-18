@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import emojis from "./Emojislol.png";
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid, GridRow, Image, Icon } from "semantic-ui-react";
+import {
+  Button,
+  Dropdown,
+  Grid,
+  GridRow,
+  Image,
+  Icon,
+} from "semantic-ui-react";
+import axios from "axios";
 
 const options = [
   {
@@ -51,8 +59,15 @@ const Home = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [parkingArea, setParkingArea] = useState("");
 
+  const url = "https://us-west2-beachhacks2021.cloudfunctions.net/function-2";
+
   const debug = () => {
     setIsSelected(true);
+
+    axios.get(url).then((res) => {
+      const persons = res.data;
+      console.log(persons);
+    });
   };
 
   const handleChange = (e, { name, value }) => {
