@@ -2,25 +2,52 @@ import React, { Component } from "react";
 import happyemojis from "./HappyEmojis.png";
 import parking from "./ParkingImg.png";
 import { Link } from "react-router-dom";
+import sademojis from "./SadEmojis.png";
 import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
+import axios from "axios";
+
+
+const url = "https://us-west2-beachhacks2021.cloudfunctions.net/function-2";
 
 export class SpecificSpot extends Component {
   constructor(props) {
     super(props);
 
-    const initialState = this.props;
-
+   
     this.state = {
-      ...initialState,
-      parkingLocation: "Pyramid Parking Structure",
+      foundSpot: true,
+      parkingLocation: [],
       floor: "Floor 1",
       spots: "7",
     };
   }
 
+  componentDidMount() {
+
+    const initialState = {... this.props};
+
+    const {location} = initialState
+    const  {parkingArea}  = location.state;
+
+    const name = {
+      name: parkingArea
+    };
+    console.log(initialState)
+    console.log(name)
+    axios.post(url, name).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      this.setState({parkingLocation: res.data, foundSpot: true })
+      console.log("it worked!!");
+    });
+
+    
+  }
+
+
   render() {
-    const { parkingLocation, floor, spots, location } = this.state;
-    const { parkingArea } = location.state;
+    const { parkingLocation, floor, spots, foundSpot} = this.state;
+
     console.log(this.state);
     return (
       <div style={{ fontFamily: "Montserrat" }}>
@@ -32,17 +59,17 @@ export class SpecificSpot extends Component {
           </Grid.Column>
           <Grid.Column width={14} class="centered column" textAlign="center" style={{position: 'absolute', top: '20%'}}>
             <div>
-              <Image 
+             
+              <br />
+              {foundSpot ? (<div> <Image 
                 size='small'
                 centered
                 src={happyemojis} fluid>
-              </Image>
-              <br />
-              <span style={{ fontSize: 40 }}>There are available spots at</span>
+              </Image><span style={{ fontSize: 40 }}>There are available spots at</span>
               <br />
               <br />
               <span style={{ fontSize: 40, fontWeight: "bolder" }}>
-                {parkingArea}
+                {parkingLocation}
               </span>
               <br />
               <br />
@@ -51,7 +78,25 @@ export class SpecificSpot extends Component {
               <span style={{ fontSize: 40, fontWeight: "bolder" }}>
                 {floor}:
               </span>
-              <span style={{ fontSize: 40 }}> {spots} Spots</span>
+              <span style={{ fontSize: 40 }}> {spots} Spots</span> </div>) :(<div><div>
+                <Image 
+                  size='small'
+                  centered
+                  src={sademojis} fluid>
+                </Image>
+                <p style={{ fontSize: 40 }}>
+                  We couldn't find any<br /> 
+                  open spots!
+                </p>
+                <p style={{ fontSize: 40, fontWeight: "bolder" }}>
+                  Please wait a few<br />
+                  minutes, then
+                </p>
+                <Button as={Link} to="/" style={{ fontSize: 20 }}>
+                  Try again
+                </Button>
+              </div> </div>)}
+              
               <br />
               <br />
               <Image 
@@ -64,9 +109,6 @@ export class SpecificSpot extends Component {
             <br />
             <br />
 
-            <Button icon labelPosition="left" secondary onClick={this.debug}>
-              Debug <Icon name="eye" />
-            </Button>
           </Grid.Column>
           <Grid.Column>
             <Button basic floated="right" as={Link} to="/about">

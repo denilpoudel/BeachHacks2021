@@ -5,6 +5,10 @@ import parking from "./ParkingImg.png";
 import red from "./redsquare.png";
 import { Link } from "react-router-dom";
 import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
+import axios from "axios";
+
+
+const url = "https://us-west2-beachhacks2021.cloudfunctions.net/function-2";
 
 export class AnySpot extends Component {
   constructor(props) {
@@ -12,8 +16,27 @@ export class AnySpot extends Component {
 
     this.state = {
       foundSpot: false,
-      parkingLocation: "Pyramid Parking Structure 2nd Floor",
+      parkingLocation: [],
     };
+  }
+
+
+  componentDidMount() {
+    const name = {
+      name: "any"
+    };
+    console.log(name)
+    axios.post(url, name).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      if (res.data == "any") {
+        this.setState({parkingLocation: res.data, foundSpot: true })
+        console.log("it worked!!")} 
+      else {
+        console.log("no spot found")
+        this.setState({foundSpot: true})
+      }
+    });    
   }
 
   debug = () => {
