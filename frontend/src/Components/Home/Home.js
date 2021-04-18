@@ -30,8 +30,7 @@ const options =[
     { key: 'e8', text: 'E8', value: 'e8'},
     { key: 'e9', text: 'E9', value: 'e9'},
     { key: 'e10', text: 'E10', value: 'e10'},
-    { key: 'e11', text: 'E11', value: 'e11'},
-]
+    { key: 'e11', text: 'E11', value: 'e11'}]
 
 function Home() {
     return (
