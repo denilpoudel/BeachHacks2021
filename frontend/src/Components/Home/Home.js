@@ -58,15 +58,22 @@ const options = [
 const Home = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [parkingArea, setParkingArea] = useState("");
+  const [receivedData, setReceivedData] = useState("");
 
   const url = "https://us-west2-beachhacks2021.cloudfunctions.net/function-2";
 
   const debug = () => {
     setIsSelected(true);
 
-    axios.get(url).then((res) => {
-      const persons = res.data;
-      console.log(persons);
+    const name = {
+      name: parkingArea,
+    };
+    axios.post(url, name).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      setReceivedData(res.data);
+
+      console.log("it worked!!");
     });
   };
 

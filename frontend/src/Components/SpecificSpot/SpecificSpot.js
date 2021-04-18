@@ -2,24 +2,49 @@ import React, { Component } from "react";
 import happyemojis from "./HappyEmojis.png";
 import { Link } from "react-router-dom";
 import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
+import axios from "axios";
+
+
+const url = "https://us-west2-beachhacks2021.cloudfunctions.net/function-2";
 
 export class SpecificSpot extends Component {
   constructor(props) {
     super(props);
 
-    const initialState = this.props;
-
+   
     this.state = {
-      ...initialState,
-      parkingLocation: "Pyramid Parking Structure",
+      parkingLocation: [],
       floor: "Floor 1",
       spots: "7",
     };
   }
 
+  componentDidMount() {
+
+    const initialState = {... this.props};
+
+    const {location} = initialState
+    const  {parkingArea}  = location.state;
+
+    const name = {
+      name: parkingArea
+    };
+    console.log(initialState)
+    console.log(name)
+    axios.post(url, name).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      this.setState({parkingLocation: res.data })
+      console.log("it worked!!");
+    });
+
+    
+  }
+
+
   render() {
-    const { parkingLocation, floor, spots, location } = this.state;
-    const { parkingArea } = location.state;
+    const { parkingLocation, floor, spots,} = this.state;
+
     console.log(this.state);
     return (
       <div style={{ fontFamily: "Montserrat" }}>
@@ -41,7 +66,7 @@ export class SpecificSpot extends Component {
               <br />
               <br />
               <span style={{ fontSize: 40, fontWeight: "bolder" }}>
-                {parkingArea}
+                {parkingLocation}
               </span>
               <br />
               <br />
