@@ -28,4 +28,4 @@ ParkingSensor/.vscode/.browse.c_cpp.db*
 ParkingSensor/.vscode/c_cpp_properties.json
 ParkingSensor/.vscode/launch.json
 ParkingSensor/.vscode/ipch
-ParkingSensor/src/WifiConfig.h
+ParkingSensor/src/ciotc_config.h
