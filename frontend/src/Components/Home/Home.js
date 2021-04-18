@@ -36,12 +36,13 @@ const options =[
 function Home() {
     return (
     <div>
-        <h1>Parking's a BEACH.</h1>
-        <h1>Let's find you a spot.</h1>
+        <h1>
+            <h1 style={{fontweight: 'bold'}}>
+                Parking's a BEACH.</h1>
+            Let's find you a spot.
+        </h1>
         <Button>Give me any open spot</Button>
-        <span>
-            or
-        </span>
+        <p>or</p>
         <Dropdown
             placeholder='Give me a spot in...'
             fluid search selection options ={options}
@@ -51,4 +52,4 @@ function Home() {
     );
 }
 
-export default Home;       
+export default Home;
