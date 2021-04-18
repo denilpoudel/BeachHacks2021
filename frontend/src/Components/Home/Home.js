@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Dropdown, Grid } from "semantic-ui-react";
+import { Button, Dropdown, Grid, Icon } from "semantic-ui-react";
 
 const options = [
   {
@@ -47,6 +47,19 @@ const options = [
 ];
 
 const Home = () => {
+  const [isSelected, setIsSelected] = useState(false);
+  const [parkingAreas, setParkingAreas] = useState("");
+
+  const debug = () => {
+    setIsSelected(true);
+  };
+
+  const handleChange = (e, { name, value }) => {
+    e.preventDefault();
+    setParkingAreas({ [name]: value }, console.log(parkingAreas));
+    setIsSelected(true);
+  };
+
   return (
     <div style={{ fontFamily: "Montserrat" }}>
       <Grid columns="equal" centered padded>
@@ -85,14 +98,29 @@ const Home = () => {
                 search
                 selection
                 clearable
+                name="parkingAreas"
                 options={options}
+                onChange={handleChange}
               />
               <br />
               <br />
             </Grid.Row>
             <Grid.Row>
-              <Button style={{ fontSize: 20 }}>Let's go!</Button>
+              {isSelected ? (
+                <div>
+                  <Button color="green" style={{ fontSize: 20 }}>
+                    Let's go!
+                  </Button>
+                </div>
+              ) : (
+                <div>
+                  <Button style={{ fontSize: 20 }}>Let's go!</Button>
+                </div>
+              )}
             </Grid.Row>
+            <Button icon labelPosition="left" secondary onClick={debug}>
+              Debug <Icon name="eye" />
+            </Button>
           </Grid.Row>
         </Grid.Column>
         <Grid.Column>
