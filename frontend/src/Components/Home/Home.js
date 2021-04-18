@@ -36,18 +36,18 @@ const options =[
 function Home() {
     return (
     <div>
-        <h1>
-            <h1 style={{fontweight: 'bold'}}>
-                Parking's a BEACH.</h1>
-            Let's find you a spot.
-        </h1>
-        <Button>Give me any open spot</Button>
-        <p>or</p>
-        <Dropdown
+        <span style={{fontSize: 45}}>
+            <span style={{fontWeight: 'bold'}}>
+            <br /><br />Parking's a BEACH.</span>
+            <br /><br />Let's find you a spot.<br /><br />
+        </span>
+        <Button style = {{fontSize: 20}}>Give me any open spot</Button>
+        <p style = {{fontSize: 20}}>or</p>
+        <Dropdown style = {{fontSize: 20}}
             placeholder='Give me a spot in...'
             fluid search selection options ={options}
         />
-        <Button>Let's go!</Button>
+        <Button style = {{fontSize: 20}}>Let's go!</Button>
     </div>
     );
 }
