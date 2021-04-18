@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import happyemojis from "./HappyEmojis.png";
+import parking from "./ParkingImg.png";
 import { Link } from "react-router-dom";
 import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
 
@@ -53,10 +54,11 @@ export class SpecificSpot extends Component {
               <span style={{ fontSize: 40 }}> {spots} Spots</span>
               <br />
               <br />
-              <br />
-              <Placeholder fluid inverted style={{ height: 300 }}>
-                <Placeholder.Image />
-              </Placeholder>
+              <Image 
+                  size='huge'
+                  centered
+                  src={parking}>
+                </Image>
             </div>
 
             <br />

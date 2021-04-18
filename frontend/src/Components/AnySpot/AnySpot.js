@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import sademojis from "./SadEmojis.png";
 import happyemojis from "./HappyEmojis.png";
+import parking from "./ParkingImg.png";
+import red from "./redsquare.png";
 import { Link } from "react-router-dom";
 import { Button, Grid, Icon, Placeholder, Image } from "semantic-ui-react";
 
@@ -44,10 +46,11 @@ export class AnySpot extends Component {
                 <p style={{ fontSize: 40, fontWeight: "bolder" }}>
                   {parkingLocation}
                 </p>
-
-                <Placeholder fluid inverted style={{ height: 300 }}>
-                  <Placeholder.Image />
-                </Placeholder>
+                <Image 
+                  size='huge'
+                  centered
+                  src={parking}>
+                </Image>
               </div>
             ) : (
               <div>
@@ -71,7 +74,6 @@ export class AnySpot extends Component {
             )}
             <br />
             <br />
-
             <Button icon labelPosition="left" secondary onClick={this.debug}>
               Debug <Icon name="eye" />
             </Button>

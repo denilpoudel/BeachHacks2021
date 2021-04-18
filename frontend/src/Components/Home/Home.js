@@ -143,6 +143,7 @@ const Home = () => {
                 </div>
               )}
             </Grid.Row>
+            <br />
             <Button icon labelPosition="left" secondary onClick={debug}>
               Debug <Icon name="eye" />
             </Button>
