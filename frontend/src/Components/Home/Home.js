@@ -59,11 +59,6 @@ const Home = () => {
                 centered
                 src={emojis} fluid>
               </Image>
-              <view style={{fontSize: 50}}>
-                  <text style={{ fontWeight: "bolder"}}>
-                    
-                  </text>
-              </view>
               <span style={{ fontSize: 50 }}>
                 <span style={{ fontWeight: "bolder" }}>
                   <br />
