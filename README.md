@@ -1,70 +1,11 @@
-# Getting Started with Create React App
+# Parking's a Beach
+A commute to campus is one thing, but long treks through parking lots and structures in search of just one empty spot is a whole other beast. We created this web app, Parking’s a BEACH, as four CSU Long Beach students who were simply fed up with finding parking.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Created by Adam Serag, Denil Poudel, Katrina Orevillo, and Steven Toda for BeachHacks 2021. View our DevPost submission [here](https://devpost.com/software/parking-s-a-beach)!
 
-## Available Scripts
+Beachhacks 2021 Winner ```2nd Overall``` & ```Best Hardware Hack Sponsored by Digi-Key```
 
-In the project directory, you can run:
+## How We Built It
+For the user-facing frontend, we designed and prototyped our concept in Figma. From there, we used React to create multiple web pages, which connected to our backend database using Google Cloud Functions through Node Postgres. We also connected Google Cloud SQL to the PostgreSQL database and received Core IoT input from the hardware Ultra Sonic Sensor, which lets our backend know if a parking space is physically occupied or not.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Our Ultra Sonic Sensor was connected to the ESP32, which goes to sleep and wakes up every 5 seconds to conserve power (in real-life application, this process would take 5 minutes). When the ESP32 wakes up from deep sleep, it pings the Ultra Sonic Sensor and assesses if there is a vehicle or object present in the parking space. If there was previously a vehicle and it is no longer there, or if it was previously empty and now occupied, the ESP32 sends a JSON file to the Cloud IoT core with the location and state data.
